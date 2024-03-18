@@ -49,3 +49,31 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', function () {
     return view('pages.home.index');
 });
+
+Route::get('/about-us', function () {
+    return view('pages.home.index');
+});
+
+Route::get('/visa-guides', function () {
+    return view('pages.home.index');
+});
+
+Route::get('/application', function () {
+    return view('pages.home.index');
+});
+
+Route::get('/other-services', function () {
+    return view('pages.home.index');
+});
+
+Route::get('/blogs', function () {
+    return view('pages.home.index');
+});
+
+Route::get('/contact-us', function () {
+    return view('pages.home.index');
+});
+
+Route::get('/corporate-enquiry', function () {
+    return view('pages.home.index');
+});
