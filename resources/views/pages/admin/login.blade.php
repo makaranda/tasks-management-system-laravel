@@ -51,7 +51,7 @@
                         </figcaption>
                       </figure>
                       <a href="{{ URL::to('') }}" class="button2 float-left">Home</a>
-                      <button class="button">Login</button>
+                      <button class="button float-right">Login</button>
                     </div>
                   </form>
             </div>

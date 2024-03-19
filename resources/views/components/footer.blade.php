@@ -2,22 +2,22 @@
     <div class="container">
         <div class="row justify-content-start">
             <div class="col-12 col-sm-6 col-md-3 col-lg-3 footer-section mt-0 align-self-center pt-0">
-                <a href="./"><img src="{{ url('public/assets/images/dubai-visa-logo.jpg') }}" alt="Visa" class="img-fluid"></a>
+                <a href="{{ URL::to('') }}"><img src="{{ url('public/assets/images/dubai-visa-logo.jpg') }}" alt="Visa" class="img-fluid"></a>
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-2 footer-section mt-3">
                 <h5>Company</h5>
                 <ul class="footer-list-view">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Corporate enquiry</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{{ URL::to('') }}/about-us">About Us</a></li>
+                    <li><a href="{{ URL::to('') }}/corporate-enquiry">Corporate enquiry</a></li>
+                    <li><a href="{{ URL::to('') }}/contact-us">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-4 footer-section mt-3">
                 <h5>Information</h5>
                 <ul class="footer-list-view">
-                    <li><a href="#">Visa Refusals, Cancellation and Refunds</a></li>
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="{{ URL::to('') }}/visa-cancellation-and-refunds">Visa Refusals, Cancellation and Refunds</a></li>
+                    <li><a href="{{ URL::to('') }}/terms-and-conditions">Terms and Conditions</a></li>
+                    <li><a href="{{ URL::to('') }}/faq">FAQs</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-3 text-center mt-3">

@@ -12,9 +12,10 @@
             <div class="row justify-content-center">
               <div class="col-lg-6">
                 <div class="d-flex flex-column h-100">
-                  <p class="mb-1 pt-2 text-bold">Makaranda</p>
-                  <h5 class="font-weight-bolder">Tasks Dashboard</h5>
-                  <p class="mb-5">From colors, cards, typography to complex elements, you will find the full documentation.</p>
+                  <p class="mb-1 pt-2 text-bold d-none">Makaranda</p>
+                  <h5 class="font-weight-bolder">Online Dubai Visas Dashboard</h5>
+                  <p class="mb-5">
+As a leading provider in the industry for hassle-free Dubai visa services, we specialize in facilitating smooth and efficient visa applications for individuals, families, and businesses looking to explore the vibrant city of Dubai and the United Arab Emirates.</p>
                   <!--<a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
                     Read More
                     <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
