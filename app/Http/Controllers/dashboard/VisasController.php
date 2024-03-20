@@ -34,6 +34,7 @@ class VisasController extends Controller
 
     public function save(Request $request){
 
+        //status title type valid_days visa_type visa_price procesing_time visa_validity stay_period extension
 
         if($request->file('image')){
             $file = $request->file('image');
@@ -44,10 +45,15 @@ class VisasController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'visa_title' => 'required',
-            'visa_deadline' => 'required',
-            'VisasTypes' => 'required',
-            'description' => 'required',
+            'title' => 'required',
+            'valid_days' => 'required',
+            'days_type' => 'required',
+            'type' => 'required',
+            'visa_type' => 'required',
+            'visa_price' => 'required',
+            'procesing_time' => 'required',
+            'visa_validity' => 'required',
+            'stay_period' => 'required',
          ]);
          //var_dump($request->all());
         if ($validator->fails()) {
@@ -57,17 +63,24 @@ class VisasController extends Controller
         }else{
 
                 $pageActive = 0;
+                $visa_url = '';
 
                 $pageData = [
-                    'user_id' => $request->user_id,
-                    'title' => $request->visa_title,
-                    'VisasTypes'=> $request->VisasTypes,
-                    'deadline'=> $request->visa_deadline,
-                    'description'=> $request->description,
-                    'status'=> $request->visa_status,
+                    'title' => $request->title,
+                    'valid_days' => $request->valid_days,
+                    'days_type'=> $request->days_type,
+                    'visa_price' => $request->visa_price,
+                    'type' => $request->type,
+                    'visa_type' => $request->visa_type,
+                    'procesing_time' => $request->procesing_time,
+                    'visa_validity' => $request->visa_validity,
+                    'stay_period' => $request->stay_period,
+                    'extension' => $request->extension,
+                    'url' => $visa_url,
+                    'status' => $request->status,
                 ];
 
-                Session::put('message','visa Create Successfully.');
+                Session::put('message','visa Package Create Successfully.');
 
        }
         //return $stuData;
@@ -85,16 +98,22 @@ class VisasController extends Controller
         return view('pages.admin.visas.edit')->with($response);
         //echo $student;
     }
-
+   
     public function update(Request $request, $page_id)
     {
         $visas = Visas::find($request->user_id);
 
         $validator = Validator::make($request->all(), [
-            'visa_title' => 'required',
-            'visa_deadline' => 'required',
-            'VisasTypes' => 'required',
-            'description' => 'required',
+            'title' => 'required',
+            'valid_days' => 'required',
+            'days_type' => 'required',
+            'type' => 'required',
+            'visa_type' => 'required',
+            'visa_price' => 'required',
+            'procesing_time' => 'required',
+            'visa_validity' => 'required',
+            'stay_period' => 'required',
+            'status'=> 'required',
          ]);
          //var_dump($request->all());
         if ($validator->fails()) {
@@ -102,14 +121,21 @@ class VisasController extends Controller
             return redirect()->Back()->withInput()->withErrors($validator);
 
         }else{
+                $visa_url = '';
 
                 $pageData = [
-                    'user_id' => $request->user_id,
-                    'title' => $request->visa_title,
-                    'VisasTypes'=> $request->VisasTypes,
-                    'deadline'=> $request->visa_deadline,
-                    'description'=> $request->description,
-                    'status'=> (int)$request->status,
+                    'title' => $request->title,
+                    'valid_days' => $request->valid_days,
+                    'days_type'=> $request->days_type,
+                    'visa_price' => $request->visa_price,
+                    'type' => $request->type,
+                    'visa_type' => $request->visa_type,
+                    'procesing_time' => $request->procesing_time,
+                    'visa_validity' => $request->visa_validity,
+                    'stay_period' => $request->stay_period,
+                    'extension' => $request->extension,
+                    'url' => $visa_url,
+                    'status' => (int)$request->status,
                 ];
                 Session::put('message','visas update Successfully.');
        }
@@ -141,8 +167,9 @@ class VisasController extends Controller
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
-                                    <th>VisasTypes</th>
-                                    <th>Deadline</th>
+                                    <th>Types</th>
+                                    <th>Valid Day/Hours</th>
+                                    <th>Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -156,12 +183,13 @@ class VisasController extends Controller
                 }
                 //user_id title VisasTypes description deadline
                 $responses .= '<tr>
-                                  <td>'.$visa->id.'</td>
+                                  <td>'.$visa->id.'</td>  
                                   <td>'.$visa->title.'</td>
-                                  <td>'.$visa->VisasTypes.'</td>
-                                  <td>'.$visa->deadline.'</td>
+                                  <td>'.ucfirst($visa->type).' Term Visa</td>
+                                  <td>'.$visa->valid_days.'</td>
+                                  <td>'.$visa->visa_price.'</td>
                                   <td>
-                                    <a href="" class="ajax-request pageactdisbtn" data-table="pages" data-field="active" data-line-id="active'.$visa->id.'" data-id="'.$visa->id.'" data-val="'.$visa->status.'" data-value="'.$visa->id.'"><i id="active'.$visa->id.'" class="admin-single-icon fa fa-toggle-'.$actvBtn.'" aria-hidden="true"></i></a>
+                                    <a href="" class="ajax-request visaactdisbtn" data-table="pages" data-field="active" data-line-id="active'.$visa->id.'" data-id="'.$visa->id.'" data-val="'.$visa->status.'" data-value="'.$visa->id.'"><i id="active'.$visa->id.'" class="admin-single-icon fa fa-toggle-'.$actvBtn.'" aria-hidden="true"></i></a>
                                   </td>
                                   <td style="width:200px;">
                                   <a href="./visas/'.$visa->id.'/edit/" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Edit</a> |
@@ -173,7 +201,7 @@ class VisasController extends Controller
 
             echo $responses;
         } else {
-            echo '<h4>No any Records in here</h4>';
+            echo '<h4 class="text-center">No any Records in here</h4>';
         }
     }
 

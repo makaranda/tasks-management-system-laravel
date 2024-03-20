@@ -7,7 +7,7 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="{{ asset('public/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="{{ asset('public/assets/css/soft-ui-dashboard.css') }}?v=1.0.7" rel="stylesheet" />
+  <link id="pagestyle" href="{{ asset('public/assets/css/soft-ui-dashboard.css') }}?v={{ date('is') }}" rel="stylesheet" />
 
 
   <style>
@@ -31,4 +31,18 @@
         box-shadow: 0 15px 27px 0 rgba(0, 0, 0, 0.05);
         width: 97%;
     }
+
+
+
+      select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-image: url('{{asset('public/assets/images/select-form-dropdown-icon2.png')}}') !important;
+          background-repeat: no-repeat !important;
+          background-position: right center !important;
+          padding-right: 20px !important; 
+          background-size: 15px;
+      }
+
     </style>

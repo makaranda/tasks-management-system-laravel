@@ -20,7 +20,7 @@
                         <a href="{{ route('visas.create') }}" class="btn btn-sm btn-secondary float-right"><i class="bi bi-plus-circle"></i> Add New Visa</a>
                     </div>
                     <div class="card-body" id="fetchAllvisasDatas">
-
+                        
                     </div>
                 </div>
               </div>

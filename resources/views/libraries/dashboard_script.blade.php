@@ -12,17 +12,17 @@
 <script src="http://parsleyjs.org/dist/parsley.js"></script>
 
 <script>
-$(document).ready( function () {
-    fetchTasks();
-    function fetchTasks(){
+$(document).ready(function() {
+    fetchVisas();
+    function fetchVisas(){
 
         $.ajax({
-            url: '{{ route('tasks.fetchtasks') }}',
+            url: '{{ route('visas.fetchvisas') }}',
             method: 'get',
             data: {action:'fetchAll'},
             success: function(response){
                 //console.log(response);
-                $('#fetchAllTasksDatas').html(response);
+                $('#fetchAllvisasDatas').html(response);
 
             },
             error: function (errors) {
@@ -34,7 +34,7 @@ $(document).ready( function () {
     }
 
 
-    $(document).on('click','.pageactdisbtn',function(e){
+    $(document).on('click','.visaactdisbtn',function(e){
             e.preventDefault();
             //console.log($(this).attr('data-id'));
             var chnagePageId = $(this).attr('data-id');
@@ -49,12 +49,12 @@ $(document).ready( function () {
             });
             */
             $.ajax({
-                    url:'{{ route('tasks.taskActive') }}',
+                    url:'{{ route('visas.visaActive') }}',
                     method: 'post',
                     data:{page_id:chnagePageId,data_val:changeDataVal,_token:'{{ csrf_token() }}'},
                     success: function(response){
                         console.log(response);
-                        fetchTasks();
+                        fetchVisas();
                     }
             });
         });

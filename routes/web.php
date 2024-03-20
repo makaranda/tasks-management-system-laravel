@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\dashboard\TasksController;
 use App\Http\Controllers\dashboard\UsersController;
 use App\Http\Controllers\dashboard\VisasController;
+use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,22 +30,22 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.index');
         Route::get('/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
 
-        Route::group(['prefix' => 'tasks'], function () {
-            Route::get('/', [TasksController::class, 'index'])->name('admin.tasks');
-            Route::get('/fetchTaskAll', [TasksController::class, 'fetchTaskAll'])->name('tasks.fetchtasks');
-            Route::post('/taskActive', [TasksController::class, 'taskActive'])->name('tasks.taskActive');
-            Route::get('/create', [TasksController::class, 'create'])->name('tasks.create');
-            Route::post('/save', [TasksController::class, 'save'])->name('tasks.save');
-            Route::get('/{page_id}/delete', [TasksController::class, 'delete'])->name('tasks.delete');
-            Route::get('/{page_id}/edit', [TasksController::class, 'edit'])->name('tasks.edit');
-            Route::post('/{page_id}/update', [TasksController::class, 'update'])->name('tasks.update');
-            Route::post('/saveRecord', [TasksController::class, 'saveRecord'])->name('tasks.saveRecord');
-        });
+        // Route::group(['prefix' => 'tasks'], function () {
+        //     Route::get('/', [TasksController::class, 'index'])->name('admin.tasks');
+        //     Route::get('/fetchTaskAll', [TasksController::class, 'fetchTaskAll'])->name('tasks.fetchtasks');
+        //     Route::post('/taskActive', [TasksController::class, 'taskActive'])->name('tasks.taskActive');
+        //     Route::get('/create', [TasksController::class, 'create'])->name('tasks.create');
+        //     Route::post('/save', [TasksController::class, 'save'])->name('tasks.save');
+        //     Route::get('/{page_id}/delete', [TasksController::class, 'delete'])->name('tasks.delete');
+        //     Route::get('/{page_id}/edit', [TasksController::class, 'edit'])->name('tasks.edit');
+        //     Route::post('/{page_id}/update', [TasksController::class, 'update'])->name('tasks.update');
+        //     Route::post('/saveRecord', [TasksController::class, 'saveRecord'])->name('tasks.saveRecord');
+        // });
 
         Route::group(['prefix' => 'visas'], function () {
             Route::get('/', [VisasController::class, 'index'])->name('admin.visas');
-            Route::get('/fetchVisasAll', [VisasController::class, 'fetchTaskAll'])->name('visas.fetchvisas');
-            Route::post('/visasActive', [VisasController::class, 'taskActive'])->name('visas.taskActive');
+            Route::get('/fetchVisasAll', [VisasController::class, 'fetchvisaAll'])->name('visas.fetchvisas');
+            Route::post('/visasActive', [VisasController::class, 'visaActive'])->name('visas.visaActive');
             Route::get('/create', [VisasController::class, 'create'])->name('visas.create');
             Route::post('/save', [VisasController::class, 'save'])->name('visas.save');
             Route::get('/{page_id}/delete', [VisasController::class, 'delete'])->name('visas.delete');
@@ -59,9 +60,12 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
-Route::get('/', function () {
-    return view('pages.home.index');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::post('/{visa_id}/application', [HomeController::class, 'visaApplication'])->name('visas.application');
+
+// Route::get('/', function () {
+//     return view('pages.home.index');
+// });
 
 Route::get('/about-us', function () {
     return view('pages.home.index');

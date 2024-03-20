@@ -35,36 +35,110 @@
                                     <input type="hidden" name="user_id" id="user_id" value="{{ $visas->user_id }}">
                                     <div class="row">
                                         <div class="col-12 col-md-12">
+                                          
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-6">
-                                                    <label for="">Task Title</label>
-                                                    <input type="text" class="form-control" name="task_title" id="task_title" value="{{ $visas->title }}"/>
-                                                    @if($errors->has('task_title'))
-                                                        <small class="text-danger">{{ $errors->first('task_title') }}</small>
+                                                    <label for="">Visa Title</label>
+                                                    <input type="text" class="form-control" name="title" id="title" value="{{ $visas->title }}"/>
+                                                    @if($errors->has('title'))
+                                                        <small class="text-danger">{{ $errors->first('title') }}</small>
                                                     @endif
                                                 </div>
                                                 <div class="col-12 col-sm-6"></div>
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-6">
-                                                    <label for="">Deadline</label>
-                                                    <input type="date" class="form-control" name="task_deadline" id="task_deadline" value="{{ $visas->deadline }}"/>
-                                                    @if($errors->has('task_deadline'))
-                                                        <small class="text-danger">{{ $errors->first('task_deadline') }}</small>
-                                                    @endif
-                                                </div>
-                                                <div class="col-12 col-sm-6">
-                                                    <label for="category">Category</label>
-                                                    <select class="form-control" name="category" id="category">
-                                                        <option value="{{ $visas->category}}">{{ $visas->category}}</option>
-                                                        @foreach ($categories as $category)
-                                                            @if ($visas->category != $category->category_name)
-                                                                <option value="{{ $category->category_name}}">{{ $category->category_name}}</option>
+                                                    <label for="type">Type</label>
+                                                    <select class="form-control" name="type" id="type">
+                                                        <option value="{{ $visas->type }}">{{ ucfirst($visas->type)}} Term Visa</option>
+                                                        @foreach ($visas_types as $visas_type)
+                                                            @if($visas->type != $visas_type->visa_type_name)
+                                                                <option value="{{ $visas_type->visa_type_name}}">{{ ucfirst($visas_type->visa_type_name)}} Term Visa</option>
                                                             @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                <div class="col-12 col-sm-6"></div>
                                             </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-4">
+                                                            <label for="">Visa Valid Days</label>
+                                                            <input type="number" class="form-control" name="valid_days" id="valid_days" value="{{ $visas->valid_days }}"/>
+                                                            @if($errors->has('visas_deadline'))
+                                                                <small class="text-danger">{{ $errors->first('visas_deadline') }}</small>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-12 col-md-4">
+                                                            <label for="">Visa Valid Type</label>
+                                                            <select class="form-control" name="days_type" id="days_type">
+                                                                @if ($visas->days_type == 'Days')
+                                                                    <option value="Days">Days</option><option value="Hours">Hours</option>
+                                                                @else
+                                                                    <option value="Hours">Hours</option><option value="Days">Days</option>
+                                                                @endif
+                                                            </select>
+                                                            @if($errors->has('days_type'))
+                                                                <small class="text-danger">{{ $errors->first('days_type') }}</small>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <label for="">Visa Amount</label>
+                                                    <input type="number" class="form-control" name="visa_price" id="visa_price" value="{{ $visas->visa_price }}"/>
+                                                    @if($errors->has('visa_price'))
+                                                        <small class="text-danger">{{ $errors->first('visa_price') }}</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12 col-sm-12">
+                                                    <label for="">Visa Type</label>
+                                                    <input type="text" class="form-control" name="visa_type" id="visa_type" value="{{ $visas->visa_type }}"/>
+                                                    @if($errors->has('visa_type'))
+                                                        <small class="text-danger">{{ $errors->first('visa_type') }}</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12 col-sm-12">
+                                                    <label for="">Processing Time</label>
+                                                    <input type="text" class="form-control" name="procesing_time" id="procesing_time" value="{{ $visas->procesing_time }}"/>
+                                                    @if($errors->has('procesing_time'))
+                                                        <small class="text-danger">{{ $errors->first('procesing_time') }}</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12 col-sm-12">
+                                                    <label for="">Visa Validity</label>
+                                                    <input type="text" class="form-control" name="visa_validity" id="visa_validity" value="{{ $visas->visa_validity }}"/>
+                                                    @if($errors->has('visa_validity'))
+                                                        <small class="text-danger">{{ $errors->first('visa_validity') }}</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12 col-sm-12">
+                                                    <label for="">Stay Period</label>
+                                                    <input type="text" class="form-control" name="stay_period" id="stay_period" value="{{ $visas->stay_period }}"/>
+                                                    @if($errors->has('stay_period'))
+                                                        <small class="text-danger">{{ $errors->first('stay_period') }}</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12 col-sm-12">
+                                                    <label for="">Extension</label>
+                                                    <input type="text" class="form-control" name="extension" id="extension" value="{{ $visas->extension }}"/>
+                                                    @if($errors->has('extension'))
+                                                        <small class="text-danger">{{ $errors->first('extension') }}</small>
+                                                    @endif
+                                                </div>
+                                            </div>
+
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-6">
                                                     <label for="">Status</label>
@@ -80,25 +154,17 @@
                                                 <div class="col-12 col-sm-6">
                                                 </div>
                                             </div>
-                                            <div class="row mt-3">
-                                                <div class="col-12 col-sm-12">
-                                                    <label for="">Description</label>
-                                                    <textarea rows="4" class="form-control" name="description" id="description">{{ $visas->description }}</textarea>
-                                                    @if($errors->has('description'))
-                                                        <small class="text-danger">{{ $errors->first('description') }}</small>
-                                                    @endif
-                                                </div>
-                                                <div class="col-12 col-sm-6"></div>
-                                            </div>
+
                                             <div class="row mt-4">
                                                 <div class="col-12 col-md-12 text-right">
                                                     <button type="submit" class="btn btn-primary shadow btn-sm">
                                                         <span class="fa fa-save" role="presentation" aria-hidden="true"></span> &nbsp;
-                                                        <span data-value="save_and_back">Update and back</span>
+                                                        <span data-value="save_and_back">Save and back</span>
                                                     </button>
                                                     <a href="{{ route('admin.visas') }}" class="btn btn-secondary shadow btn-sm"><span class="fa fa-ban"></span> &nbsp;Cancel</a>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </form>

@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-6">
-                                                    <label for="type">Visa Type</label>
+                                                    <label for="type">Type</label>
                                                     <select class="form-control" name="type" id="type">
                                                         @foreach ($visas_types as $visas_type)
                                                             <option value="{{ $visas_type->visa_type_name}}">{{ ucfirst($visas_type->visa_type_name)}} Term Visa</option>
@@ -59,11 +59,25 @@
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-6">
-                                                    <label for="">Visa Valid Days</label>
-                                                    <input type="number" class="form-control" name="valid_days" id="valid_days" value="{{ old('visas_deadline') }}"/>
-                                                    @if($errors->has('visas_deadline'))
-                                                        <small class="text-danger">{{ $errors->first('visas_deadline') }}</small>
-                                                    @endif
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-8">
+                                                            <label for="">Visa Valid Days/Hours</label>
+                                                            <input type="number" class="form-control" name="valid_days" id="valid_days" value="{{ old('valid_days') }}"/>
+                                                            @if($errors->has('valid_days'))
+                                                                <small class="text-danger">{{ $errors->first('valid_days') }}</small>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-12 col-md-4">
+                                                            <label for="">Visa Valid Type</label>
+                                                            <select class="form-control" name="days_type" id="days_type">
+                                                                <option value="Days">Days</option>
+                                                                <option value="Hours">Hours</option>
+                                                            </select>
+                                                            @if($errors->has('days_type'))
+                                                                <small class="text-danger">{{ $errors->first('days_type') }}</small>
+                                                            @endif
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6">
                                                     <label for="">Visa Amount</label>

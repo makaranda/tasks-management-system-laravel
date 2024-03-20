@@ -12,11 +12,11 @@
     
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">-->
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ url('public/assets/css/input-placeholder.css') }}?v=">
+    <link rel="stylesheet" href="{{ url('public/assets/css/input-placeholder.css') }}?v={{ date('is') }}">
 
-    <link rel="stylesheet" href="{{ URL::to('public/assets/css/whatsapp.css') }}?v=">
-    <link rel="stylesheet" href="{{ url('public/assets/css/mystyle.css') }}?v=">
-    <link rel="stylesheet" href="{{ url('public/assets/css/responsive.css') }}?v=">
+    <link rel="stylesheet" href="{{ URL::to('public/assets/css/whatsapp.css') }}?v={{ date('is') }}">
+    <link rel="stylesheet" href="{{ url('public/assets/css/mystyle.css') }}?v={{ date('is') }}">
+    <link rel="stylesheet" href="{{ url('public/assets/css/responsive.css') }}?v={{ date('is') }}">
 
     <script src="{{ url('public/assets/js/jquery.min.js') }}"></script>
     <script src="{{ url('public/assets/js/owl.carousel.js') }}"></script>
